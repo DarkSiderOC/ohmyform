@@ -37,6 +37,7 @@
     "envfile": "^2.3.0",
     "express": "^4.17.1",
     "express-session": "^1.16.2",
+    "forever": "^2.0.0",
     "glob": "^7.1.4",
     "grunt": "^1.0.4",
     "grunt-concurrent": "^3.0.0",
