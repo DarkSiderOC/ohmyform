@@ -70,7 +70,7 @@ function commitChanges(cb) {
     gulp.src('.')
         .pipe(git.add())
         .pipe(git.commit(`[Prerelease] Bumped version number to ${packageJson.version}`))
-        .on('end', () => console.log("dio can"))
+        .on('end', () => git.push('origin', 'master', cb))
         
 }
 
