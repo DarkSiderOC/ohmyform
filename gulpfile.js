@@ -71,11 +71,12 @@ function commitChanges(cb) {
         .pipe(git.add())
         .pipe(git.commit(`[Prerelease] Bumped version number to ${packageJson.version}`))
         .on('end', function () {
+            console.log(git.status())
             console.log("ok")
-            git.push('origin', 'master', function(err) {
-                if (err) throw (err);
-                cb(err)
-              });
+            // git.push('origin', 'master', function(err) {
+            //     if (err) throw (err);
+            //     cb(err)
+            //   });
         })
         // .pipe(git.push('origin', 'master', (err) => {
         //     console.log("dio poroc")
