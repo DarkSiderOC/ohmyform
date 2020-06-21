@@ -64,7 +64,7 @@ function bumpVersion(cb) {
 
 
 function commitChanges(cb) {
-    gulp.src('./')
+    gulp.src('.')
         .pipe(git.add())
         .pipe(git.commit(`[Prerelease] Bumped version number to ${packageJson.version}`, () => {
             console.log("okok")
