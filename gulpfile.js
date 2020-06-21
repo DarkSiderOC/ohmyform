@@ -84,4 +84,4 @@ function pushChanges(cb) {
 
 // prova
 exports.build = build;
-exports.default = series(commitChanges);
+exports.default = series(generateChangelog, bumpVersion, commitChanges);
