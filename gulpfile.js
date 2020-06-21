@@ -44,8 +44,8 @@ function generateChangelog(cb) {
         append: true,
       }),
     )
-    .pipe(gulp.dest('./'));
-  cb();
+      .pipe(gulp.dest('./'))
+      .on('end', () => cb());
 }
 
 function bumpVersion(cb) {
