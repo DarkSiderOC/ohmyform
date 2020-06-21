@@ -90,3 +90,14 @@
 
 
 
+# [2.24.0](https://github.com/ohmyform/ohmyform/compare/0.2.3...2.24.0) (2020-06-21)
+
+
+### Features
+
+* ad ([00641fb](https://github.com/ohmyform/ohmyform/commit/00641fb4a56632a91a6536dc0c1adc5808ac1866))
+* maybe its working ([a449282](https://github.com/ohmyform/ohmyform/commit/a449282a527389205937556b508741ddef912dd4))
+* teset ([205de4f](https://github.com/ohmyform/ohmyform/commit/205de4f9c0218edec9e4aad86e382e8dd4745026))
+
+
+
