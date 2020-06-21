@@ -4,10 +4,10 @@ const { exec } = require('child_process');
 const conventionalChangelog = require('gulp-conventional-changelog');
 const conventionalRecommendedBump = require('conventional-recommended-bump');
 const bump = require('gulp-bump');
-// const git = require('gulp-git');
+const git = require('gulp-git');
 const packageJson = require('./package.json');
 // const runSequence = require('run-sequence');
-const git = require('gulp-git-streamed')
+// const git = require('gulp-git-streamed')
 
 
 function clean(cb) {
@@ -70,11 +70,15 @@ function commitChanges(cb) {
     gulp.src('.')
         .pipe(git.add())
         .pipe(git.commit(`[Prerelease] Bumped version number to ${packageJson.version}`))
-        .pipe(git.push('origin', 'master', (err) => {
-            console.log("dio poroc")
-            if (err) console.log(err)
-            else cb()
-        }))
+        .on('end', function () {
+            console.log("ok")
+            cb()
+        })
+        // .pipe(git.push('origin', 'master', (err) => {
+        //     console.log("dio poroc")
+        //     if (err) console.log(err)
+        //     else cb()
+        // }))
         
 }
 
