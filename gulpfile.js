@@ -71,6 +71,7 @@ function commitChanges(cb) {
         .pipe(git.add())
         .pipe(git.commit(`[Prerelease] Bumped version number to ${packageJson.version}`))
         .on('end', () => git.push('origin', 'master', (err) => {
+            console.log("dio poroc")
             if (err) console.log(err)
             else cb()
         }))
