@@ -11,58 +11,58 @@ const packageJson = require('./package.json');
 
 
 function clean(cb) {
-  cb();
+    cb();
 }
 
 function build(cb) {
-  exec('npm run-script build', function(error, stdout, stderr) {
-    if (error) {
-      console.log(stderr);
-      cb(true);
-    } else {
-      console.log(stdout);
-      cb();
-    }
-  });
+    exec('npm run-script build', function (error, stdout, stderr) {
+        if (error) {
+            console.log(stderr);
+            cb(true);
+        } else {
+            console.log(stdout);
+            cb();
+        }
+    });
 }
 
 function copyToDest(cb) {
-  gulp.src('./build/*.*').pipe(
-    gulp.dest('/home/nabla/unipiazza/unipiazza-web-landing/public', {
-      overwrite: true,
-    }),
-  );
-  cb();
+    gulp.src('./build/*.*').pipe(
+        gulp.dest('/home/nabla/unipiazza/unipiazza-web-landing/public', {
+            overwrite: true,
+        }),
+    );
+    cb();
 }
 
 function generateChangelog(cb) {
-  gulp
-    .src('Changelog.md')
-    .pipe(
-      conventionalChangelog({
-        preset: 'angular',
-        append: true,
-      }),
-    )
-      .pipe(gulp.dest('./'))
-      .on('end', () => cb());
+    gulp
+        .src('Changelog.md')
+        .pipe(
+            conventionalChangelog({
+                preset: 'angular',
+                append: true,
+            }),
+        )
+        .pipe(gulp.dest('./'))
+        .on('end', () => cb());
 }
 
 function bumpVersion(cb) {
-  conventionalRecommendedBump(
-    {
-      preset: 'angular',
-    },
-    function(err, result) {
-      console.log(result.releaseType);
-      console.log(result);
-      gulp
-        .src('./package.json')
-        .pipe(bump({ type: result.releaseType }))
-        .pipe(gulp.dest('./'));
-      cb();
-    },
-  );
+    conventionalRecommendedBump(
+        {
+            preset: 'angular',
+        },
+        function (err, result) {
+            console.log(result.releaseType);
+            console.log(result);
+            gulp
+                .src('./package.json')
+                .pipe(bump({ type: result.releaseType }))
+                .pipe(gulp.dest('./'))
+                .on('end', () => cb());
+        },
+    );
 }
 
 
@@ -78,12 +78,12 @@ function commitChanges(cb) {
             //     cb(err)
             //   });
         })
-        // .pipe(git.push('origin', 'master', (err) => {
-        //     console.log("dio poroc")
-        //     if (err) console.log(err)
-        //     else cb()
-        // }))
-        
+    // .pipe(git.push('origin', 'master', (err) => {
+    //     console.log("dio poroc")
+    //     if (err) console.log(err)
+    //     else cb()
+    // }))
+
 }
 
 function pushChanges(cb) {
@@ -91,7 +91,7 @@ function pushChanges(cb) {
 }
 
 function updateVersion(cb) {
-    
+
 }
 
 // prova prova prova
