@@ -5,7 +5,7 @@ const conventionalChangelog = require('gulp-conventional-changelog');
 const conventionalRecommendedBump = require('conventional-recommended-bump');
 const bump = require('gulp-bump');
 const git = require('gulp-git');
-const packageJson = require('./package.json');
+
 // const runSequence = require('run-sequence');
 // const git = require('gulp-git-streamed')
 
@@ -67,6 +67,7 @@ function bumpVersion(cb) {
 
 
 function commitChanges(cb) {
+    const packageJson = require('./package.json');
     gulp.src('.')
         .pipe(git.add())
         .pipe(git.commit(`[Prerelease] Bumped version number to ${packageJson.version}`))
