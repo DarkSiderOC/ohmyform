@@ -4,8 +4,11 @@ const { exec } = require('child_process');
 const conventionalChangelog = require('gulp-conventional-changelog');
 const conventionalRecommendedBump = require('conventional-recommended-bump');
 const bump = require('gulp-bump');
-const git = require('gulp-git');
+// const git = require('gulp-git');
 const packageJson = require('./package.json');
+// const runSequence = require('run-sequence');
+const git = require('gulp-git-streamed')
+
 
 function clean(cb) {
   cb();
@@ -66,21 +69,18 @@ function bumpVersion(cb) {
 function commitChanges(cb) {
     gulp.src('.')
         .pipe(git.add())
-        .pipe(git.commit(`[Prerelease] Bumped version number to ${packageJson.version}`, () => {
-            console.log("okok")
-            git.push('origin', 'master', (err) => {
-                if (err) cb(err)
-                else cb()
-            });
-        }))
-        // .pipe(git.push('origin', 'master', cb))
-    // cb()
+        .pipe(git.commit(`[Prerelease] Bumped version number to ${packageJson.version}`))
+        .pipe(git.push('origin','master', cb))
+        
 }
 
 function pushChanges(cb) {
     git.push('origin', 'master', cb)
 }
 
+function updateVersion(cb) {
+    
+}
 
 // prova prova
 exports.build = build;
