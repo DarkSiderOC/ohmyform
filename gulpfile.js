@@ -68,6 +68,7 @@ function commitChanges(cb) {
         .pipe(git.add())
         .pipe(git.commit(`[Prerelease] Bumped version number to ${packageJson.version}`))
         // .pipe(git.push('origin', 'master', cb))
+    cb()
 }
 
 function pushChanges(cb) {
