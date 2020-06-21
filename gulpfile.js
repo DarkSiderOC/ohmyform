@@ -79,14 +79,17 @@ function commitChanges(cb) {
         })
 }
 
-function pushChanges(cb) {
-    git.push('origin', 'master', cb)
-}
+function createTag(cb) {
+    const packageJson = require('./package.json');
 
-function updateVersion(cb) {
-
+    git.tag(`v${packageJson.version}`, `Created Tag for version ${packageJson.version}`, function (error) {
+        if (error) cb(error)
+        else {
+            git.push('origin', 'master', {args: '--tags'}, cb);
+        }
+    })
 }
 
 // prova prova prova
 exports.build = build;
-exports.default = series(generateChangelog, bumpVersion, commitChanges);
+exports.default = series(bumpVersion, generateChangelog, commitChanges, createTag);
