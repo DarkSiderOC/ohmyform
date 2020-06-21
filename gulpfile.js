@@ -66,9 +66,11 @@ function bumpVersion(cb) {
 function commitChanges(cb) {
     gulp.src('./')
         .pipe(git.add())
-        .pipe(git.commit(`[Prerelease] Bumped version number to ${packageJson.version}`))
+        .pipe(git.commit(`[Prerelease] Bumped version number to ${packageJson.version}`, () => {
+            console.log("okok")
+        }))
         // .pipe(git.push('origin', 'master', cb))
-    cb()
+    // cb()
 }
 
 function pushChanges(cb) {
