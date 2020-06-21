@@ -1,4 +1,4 @@
-const { series } = require('gulp');
+const { series, parellel } = require('gulp');
 const gulp = require('gulp');
 const { exec } = require('child_process');
 const conventionalChangelog = require('gulp-conventional-changelog');
