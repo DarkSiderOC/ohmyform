@@ -123,3 +123,12 @@
 
 
 
+# [2.28.0](https://github.com/ohmyform/ohmyform/compare/v2.27.0...v2.28.0) (2020-06-21)
+
+
+### Features
+
+* prova 2 ([82c2fa4](https://github.com/ohmyform/ohmyform/commit/82c2fa4647ab20c7af137973dfcfd30c6ebf3876))
+
+
+
