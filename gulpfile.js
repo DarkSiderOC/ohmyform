@@ -68,10 +68,13 @@ function commitChanges(cb) {
         .pipe(git.add())
         .pipe(git.commit(`[Prerelease] Bumped version number to ${packageJson.version}`))
         // .pipe(git.push('origin', 'master', cb))
+}
+
+function pushChanges(cb) {
     git.push('origin', 'master', cb)
 }
 
 
 
 exports.build = build;
-exports.default = series(commitChanges);
+exports.default = series(commitChanges, pushChanges);
